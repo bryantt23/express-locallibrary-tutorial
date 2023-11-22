@@ -8,6 +8,17 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const catalogRouter = require('./routes/catalog'); //Import routes for "catalog" area of site
 
+// Set up mongoose connection
+const mongoose = require('mongoose');
+mongoose.set('strictQuery', false);
+const mongoDB =
+  'mongodb+srv://bt23:123123aa@cluster0.ktlwnkg.mongodb.net/local_library?retryWrites=true&w=majority';
+
+main().catch(err => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+}
+
 const app = express();
 
 // view engine setup
