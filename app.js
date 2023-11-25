@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -11,8 +12,7 @@ const catalogRouter = require('./routes/catalog'); //Import routes for "catalog"
 // Set up mongoose connection
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
-const mongoDB =
-  '***REMOVED***';
+const mongoDB = process.env.MONGODB_URI;
 
 main().catch(err => console.log(err));
 async function main() {
